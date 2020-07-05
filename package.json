@@ -1,0 +1,33 @@
+{
+  "name": "roti-homepage-frontend",
+  "version": "1.0.0",
+  "description": "roti-homepage-frontend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p 8080",
+    "deploy": "gcloud app deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shugyohsoh/roti-homepage-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shugyohsoh/roti-homepage-frontend/issues"
+  },
+  "homepage": "https://github.com/Shugyohsoh/roti-homepage-frontend#readme",
+  "dependencies": {
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.13",
+    "@types/react": "^16.9.38",
+    "typescript": "^3.9.5"
+  }
+}

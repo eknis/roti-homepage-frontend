@@ -1,0 +1,56 @@
+name: prod CD
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Authenticate on GCS
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        project_id: 'roti-281008'
+        service_account_key: ${{ secrets.GCP_KEY }}
+
+    - name: npm setup
+      run: |
+        npm i
+        npm run build
+    - name: deploy
+      run: gcloud app deploy --quiet
+
+    - name: The job has succeeded Notify
+      if: ${{ success() }}
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_CHANNEL: tech-all
+        SLACK_ICON: http://staticfilemanga.takeshobo.co.jp/global-image/manga/okawabukubu/popute3/ch/popuko.jpg
+        SLACK_MESSAGE: 'でぷろいしたらぁよ でぷろいしたらぁよ!!'
+        SLACK_TITLE: デプロイ成功
+        SLACK_USERNAME: ポプ子
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        
+    - name: The job has failed Notify
+      if: ${{ failure() }}
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_CHANNEL: tech-all
+        SLACK_ICON: http://mangalifewin.takeshobo.co.jp/global-image/manga/okawabukubu/popute3/ch/pipimi.jpg
+        SLACK_MESSAGE: 'でぷろいさしたれや!!'
+        SLACK_TITLE: デプロイ失敗
+        SLACK_USERNAME: ピピ美
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      env:
+        CI: true
