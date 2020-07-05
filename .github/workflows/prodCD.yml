@@ -52,5 +52,3 @@ jobs:
         SLACK_TITLE: デプロイ失敗
         SLACK_USERNAME: ピピ美
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      env:
-        CI: true
