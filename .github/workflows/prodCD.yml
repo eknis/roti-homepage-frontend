@@ -36,7 +36,7 @@ jobs:
       uses: rtCamp/action-slack-notify@master
       env:
         SLACK_CHANNEL: tech-all
-        SLACK_ICON: http://staticfilemanga.takeshobo.co.jp/global-image/manga/okawabukubu/popute3/ch/popuko.jpg
+        SLACK_ICON: 'https://66.media.tumblr.com/82bc0000f3e388904e8c6c7ad9aceecd/tumblr_p56p7bBYBH1x0h5yoo9_250.jpg'
         SLACK_MESSAGE: 'でぷろいしたらぁよ でぷろいしたらぁよ!!'
         SLACK_TITLE: デプロイ成功
         SLACK_USERNAME: ポプ子
@@ -47,7 +47,7 @@ jobs:
       uses: rtCamp/action-slack-notify@master
       env:
         SLACK_CHANNEL: tech-all
-        SLACK_ICON: http://mangalifewin.takeshobo.co.jp/global-image/manga/okawabukubu/popute3/ch/pipimi.jpg
+        SLACK_ICON: 'https://66.media.tumblr.com/35f0532c12e1cfaaf24f25d38136d2ed/tumblr_p3ldqqFbcG1slg4jbo1_250.png'
         SLACK_MESSAGE: 'でぷろいさしたれや!!'
         SLACK_TITLE: デプロイ失敗
         SLACK_USERNAME: ピピ美
